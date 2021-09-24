@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
- from .models import Post, Comment
- from .forms import PostForm, CommentForm
- from django.utils import timezone
- from django.core.paginator import Paginator
- from django.http import HttpResponse
- import json
- from django.db.models import Q
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
+from django.utils import timezone
+from django.core.paginator import Paginator
+from django.http import HttpResponse
+import json
+from django.db.models import Q
 
 # def index(request):
 #    return render(request, 'board/index.html')
@@ -29,13 +29,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 def main(request):
     posts = Post.objects.all()
-
     paginator = Paginator(posts, 12)
     page = request.GET.get('page')
     all_posts = paginator.get_page(page)
 
     return render(request, 'main.html', {'allPost':all_posts})
-
 
 def category(request, category):
     posts = Post.objects.filter(category = category)
