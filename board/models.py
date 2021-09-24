@@ -1,7 +1,9 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.db.models.fields.related import ManyToManyField
 
-class Board(models.Model):
+class Post(models.Model):
     CATEGORY_CHOICES = [
         ('c01', '스포츠'),
         ('c02', '게임'),
@@ -16,18 +18,19 @@ class Board(models.Model):
 
     title = models.CharField(max_length=200)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='c01')
-    content = models.TextField()
-    create_date = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey('user.User', on_delete=models.CASCADE)
-    like = ManyToManyField('user.User', related_name='like', blank=True)
+    body = models.TextField()
+    upload_date = models.DateTimeField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    like = ManyToManyField(User, related_name='like', blank=True)
     
     def __str__(self):
         return self.title
 
-# class Reply(models.Model):
-#     reply = models.ForeignKey(Board, on_delete=models.CASCADE)
-#     comment = models.CharField(max_length=200)
-#     create_date = models.DateTimeField()
+    class Meta:
+        ordering = ['-upload_date']
 
-#     def __str__(self):
-#         return self.comment
+class Comment(models.Model):
+     post_id = models.ForeignKey("Post", on_delete=models.CASCADE, db_column="post_id", default="0")
+     comment_id = models.ForeignKey("self", on_delete=models.CASCADE, blank=True, null=True)
+     writer = models.ForeignKey(User, related_name='writer', on_delete=models.CASCADE)
+     body = models.TextField()
