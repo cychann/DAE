@@ -118,28 +118,22 @@
       <div class="close-soon">
         <div class="close-soon-comment">기간이 얼마 남지 않았습니다!</div>
         <div class="close-soon-posts">
-          <div class="close-soon-post"></div>
-          <div class="close-soon-post"></div>
-          <div class="close-soon-post"></div>
-          <div class="close-soon-post"></div>
-          <div class="close-soon-post"></div>
-          <div class="close-soon-post"></div>
-          <div class="close-soon-post"></div>
-          <div class="close-soon-post"></div>
+          {% for post in soon_post %}
+          <div class="close-soon-post">
+            {{post.title}}
+          </div>
+          {%endfor%}
         </div>
       </div>
 
       <div class="almost-gather">
-        <div class="almost-gather-comment">곧 마감입니다!</div>
+        <div class="almost-gather-comment">#파티원구함 전체보기</div>
         <div class="almost-gather-posts">
-          <div class="almost-gather-post"></div>
-          <div class="almost-gather-post"></div>
-          <div class="almost-gather-post"></div>
-          <div class="almost-gather-post"></div>
-          <div class="almost-gather-post"></div>
-          <div class="almost-gather-post"></div>
-          <div class="almost-gather-post"></div>
-          <div class="almost-gather-post"></div>
+          {% for post in allPost %}
+          <div class="almost-gather-post">
+            {{post.title}}
+          </div>
+          {%endfor%}
         </div>
       </div>
     </div>

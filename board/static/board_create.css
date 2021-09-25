@@ -1,0 +1,70 @@
+body {
+    align-content: center;
+    align-items: center;
+    margin-left:200px;
+    margin-right:200px;
+}
+
+.page {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top:60px;
+    justify-content: center;
+}
+
+
+.mainBox {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:580px;
+    margin-bottom:12px;
+}
+
+
+.postBoxDiv {
+    margin-top:20px;
+}
+
+#titleBox {
+    width:580px;
+    height:50px;
+    margin-left:15px;
+    border-top:solid;
+    border-bottom:solid;
+    border-right: none;
+    border-left: none;
+    border-color: #E4E5ED;
+    margin-bottom:15px;
+    padding-left:20px;
+}
+
+#writeBox {
+    width:580px;
+    height:600px;
+    background: #E4E5ED;
+    border:none;
+    font-family:inherit;
+    border-radius: 10px;
+    margin-left:15px;
+    padding:10px;
+    line-height: 20px;
+}
+#writeButton {
+    border:none;
+    font-family:inherit;
+    background: #FFD400;
+    width:89px;
+    height:35px;
+    border-radius: 10px;
+    font-size:inherit;
+    margin-left:525px;
+    margin-bottom:10px;
+    margin-top:5px;
+}
+
+.categoryRadio {
+    margin-left:15px;
+    margin-bottom:10px;
+}
