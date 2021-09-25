@@ -169,7 +169,7 @@ def transLocation(code):
         'l13': '대구',
         'l10': '울산', 
         'l11': '부산', 
-        'l03': '제주',
+        'l12': '제주',
     }
     name = location_trans[code]
     return name
