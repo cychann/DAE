@@ -2,7 +2,8 @@
 {% load crispy_forms_tags %}
 {% load i18n %}
 {% load account socialaccount %}
-
+{% providers_media_js %} 
+{% load static %}
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
@@ -154,6 +155,26 @@ text-decoration: none;
 .signup_link a:hover {
 text-decoration: underline;
 }
+
+.div_social a{
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+.div_social {
+  margin: 5px;
+  padding: 3px;
+  background-color: #7ec2f06b;
+  border-radius: 15px;
+}
+
+.div_social img{
+  width: 30px;
+  height: 30px;
+}
+.div_social span{
+  text-align: center;
+}
 </style>
 
 
@@ -196,6 +217,14 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p> -->
     {% endif %}
     <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
     <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+
+    <div class="div_social">
+      <a href="{% provider_login_url 'google' %}"> 
+        <img src="{% static 'google.png' %}" alt="구글 로그인" height="45">
+        <span>구글 아이디로 로그인</span>
+      </a>
+    </div>
+    
   </form>
 </div>
 <script src="https://kit.fontawesome.com/d736d670df.js" crossorigin="anonymous"></script>
