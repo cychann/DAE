@@ -4,22 +4,21 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+ <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
 <style type="text/css">
         thead {
             background-color:#cecece;
-        }
-
-        .content {
-            max-width:500px;
-            margin: auto;
-            padding:10px;
         }
 
         .header {
             text-align: center;
         }
 
-        .board {
+        .table {
             width: 100%
         }
 
@@ -36,12 +35,12 @@
             <a href="/new">글쓰기</a>
         </div>
 
-        <table class="post">
+        <table class="table">
             <thead>
                 <tr class="header">
-                    <th style="width:10%;">순번</th>
-                    <th style="width:60%">제목</th>
-                    <th style="width:30%">작성일자</th>
+                    <th scope="col" class="text-center">순번</th>
+                    <th scope="col" class="text-center">제목</th>
+                    <th scope="col" class="text-center">작성일자</th>
                 </tr>
             </thead>
             <tbody>
