@@ -85,11 +85,11 @@
         </nav>
         <div class="itemContainer">
             {% for post in allPost %}
-            <a class="itemBox" href="{%url 'party:detail' post.id%}">
-                <img src="{% static 'skyblue.png' %}" class="itemImage">
+            <div class="itemBox" > <!--href="{%url 'party:detail' post.id%}"-->
+                <a href="{%url 'party:detail' post.id%}"><img src="{% static 'skyblue.png' %}" class="itemImage"></a>
                 <div class="post_component">
                     <div class="post_info">
-                        <p class="title">{{post.title}}</p>
+                        <a href="{%url 'party:detail' post.id%}"><p class="title">{{post.title}}</p></a>
                         <p class="writer">{{post.author}}</p>
                         <p class="pubDate">{{post.upload_date | date:'y-m-d'}}</p>
                     </div>
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <!-- <button class="heartButton" type="button"><img src="{% static 'heart.png' %}" clas"></button> -->
-            </a>
+            </div>
             
             {%endfor%}
             

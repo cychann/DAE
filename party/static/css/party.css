@@ -120,3 +120,11 @@ ul {
   margin-left: 3px;
   margin-top: -10px;
 }
+
+.post_info a {
+  text-decoration: none;
+  color: black;
+}
+.post_info a:hover{
+  text-decoration: underline;
+}
