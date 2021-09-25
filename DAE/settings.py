@@ -67,8 +67,8 @@ ROOT_URLCONF = 'DAE.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'DAE/templates'), 
-        os.path.join(BASE_DIR, 'user/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'DAE/templates'),
+                 os.path.join(BASE_DIR, 'user/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -148,10 +148,11 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-#allauth
+# allauth
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of 'allauth'
     'django.contrib.auth.backends.ModelBackend',
@@ -164,10 +165,10 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
 
-#crispy form
+# crispy form
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-#date,time input format
+# date,time input format
 DATETIME_INPUT_FORMATS = ['%Y-%m-%d %H:%M']
 DATE_INPUT_FORMATS = ['%Y-%m-%d']
 TIME_INPUT_FORMATS = ['%H:%M']
