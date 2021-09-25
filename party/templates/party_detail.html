@@ -12,6 +12,26 @@
     
 </head>
 <body>
+
+    <!-- navbar -->
+    <div class="navbar">
+        <div class="navbar-left">
+          <a href="{% url 'party:main' %}">
+            <i class="fas fa-user-friends"></i>
+            <span class="navbar-title">파티원구함</span>
+          </a>
+        </div>
+        <div class="navbar-right">
+          {% if user.is_authenticated %}
+          <a href="{% url 'party:new' %}" class="post-party">파티글 작성</a>
+          <a href="">마이페이지</a>
+          <a href="{% url 'account_logout' %}">로그아웃</a>
+          {% else %}
+          <a href="{% url 'account_login' %}">로그인</a>
+          <a href="{% url 'account_signup' %}">회원가입</a>
+          {% endif %}
+        </div>
+      </div>
     
     <div class="page">
         <div class="leftBox">

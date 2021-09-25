@@ -5,6 +5,47 @@ body {
   margin-right: 200px;
 }
 
+.navbar {
+  margin-bottom: 5rem;
+}
+
+.navbar-left a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-title {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0.5rem;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-right a {
+  margin: 1rem;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+.post-party {
+  font-size: 20px;
+}
+
+.navbar a:hover {
+  color: #ffab40;
+  transform: scale(1.2);
+  transition: all 0.3s;
+}
+
 .itemImage {
   width: 600px;
   height: 370px;
