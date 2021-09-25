@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,9 +46,9 @@
         <h1>글 작성</h1>
 
         <div class="party-create-body">
-            <form action="{% url 'party:new' %}">
+            <form action="{% url 'party:new' %}" method="POST">
                 {% csrf_token %}
-                {{form.as_p}}
+                {{form | crispy}}
                 <button type="submit" class="party-submit">제출</button>
             </form>
         </div>

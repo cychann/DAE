@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 import json
 from django.db.models import Q
+import datetime
 
 # Create your views here.
 def main(request):
@@ -15,13 +16,13 @@ def main(request):
     page = request.GET.get('page')
     all_posts = paginator.get_page(page)
 
-    close_soon_posts = Post.objects.all().order_by('meet_date')
+    # close_soon_posts = Post.objects.all().order_by('meet_date')
 
-    paginator2 = Paginator(close_soon_posts, 8)
-    soon_page = request.GET.get('page')
-    soon_posts = paginator2.get_page(soon_page)
+    # paginator2 = Paginator(close_soon_posts, 8)
+    # soon_page = request.GET.get('page')
+    # soon_posts = paginator2.get_page(soon_page)
 
-    return render(request, 'main.html', {'allPost':all_posts, 'soon_post': soon_posts})
+    return render(request, 'main.html', {'allPost':all_posts})
 
 
 def category(request, category):
@@ -72,7 +73,8 @@ def create_re_comment(request, post_id, comment_id):
 
 def new(request):
     if request.method == 'POST':
-        post_form = PostForm(request.POST, request.FILES)
+        post_form = PostForm(request.POST)
+        print(post_form)
         if post_form.is_valid():
             new_post = post_form.save(commit=False)
             new_post.upload_date = timezone.now() 
@@ -106,11 +108,9 @@ def delete(request, id):
 
 
 def post_likes(request):
-    print("1")
     if request.is_ajax():
         post_id = request.GET.get('post_id') #post_id!! 이름 주의
         post = Post.objects.get(id=post_id)
-    print("2")
     user = request.user
     if post.like.filter(id = user.id).exists():
         post.like.remove(user)
@@ -118,7 +118,6 @@ def post_likes(request):
     else:
         post.like.add(user)
         message = "좋아요"
-        print("3")
     context = {
         'like_count' : post.like.count(),
         'message' : message,

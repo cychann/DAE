@@ -11,10 +11,10 @@ class PostForm(forms.ModelForm):
         choices=Post.CATEGORY_CHOICES,
         label='카테고리'
     )
-    meet_date = forms.DateField(
-        widget=DateTimeInput(),
-        label='날짜'
-    )
+    # meet_date = forms.DateField(
+    #     widget=DateTimeInput(),
+    #     label='날짜'
+    # )
     title = forms.CharField(
         widget = forms.TextInput(),
         label='제목'
@@ -33,7 +33,7 @@ class PostForm(forms.ModelForm):
     )
     class Meta:
         model = Post
-        fields = ['title', 'category', 'location', 'capacity', 'meet_date', 'body']
+        fields = ['title', 'category', 'location', 'capacity', 'body']
 
 
 class CommentForm(forms.ModelForm):

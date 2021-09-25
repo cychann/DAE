@@ -25,14 +25,14 @@ class Post(models.Model):
         ('l10', '울산광역시'), ('l11', '부산광역시'), ('l03', '제주특별자치도'),]
     title = models.CharField(max_length=20)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='c01')
+    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='c01', null=True)
 
-    location = models.CharField(max_length=10, choices=LOCATION_CHOICES, default='l01')
+    location = models.CharField(max_length=10, choices=LOCATION_CHOICES, default='l01', null=True)
     capacity = models.IntegerField()
-    currentCount = models.IntegerField(default=0)
+    currentCount = models.IntegerField(default=0, null=True, blank=True)
     body = models.TextField()
     upload_date = models.DateTimeField()
-    meet_date = models.DateTimeField()
+    # meet_date = models.DateTimeField(null=True)
     like = ManyToManyField(User, related_name='like', blank=True)
     applicant = ManyToManyField(User, related_name='apply', blank=True)
 
