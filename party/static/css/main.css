@@ -164,3 +164,97 @@
 #DAE {
   width: 70%;
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  body {
+    width: 100%;
+  }
+
+  .main {
+    width: 100%;
+    background-color: #fff9c4;
+    /* padding: 0 12rem 2rem; */
+    margin-bottom: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar {
+    width: 375px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar-title {
+    font-size: 30px;
+  }
+
+  .main-text-description {
+    width: 375px;
+    margin-bottom: 0.7rem;
+    font-size: 20px;
+  }
+
+  .main-text-title {
+    font-size: 60px;
+  }
+
+  .main-serach-box input {
+    width: 200px;
+    height: 60px;
+    font-size: 16px;
+  }
+
+  .main-serach-box input::placeholder {
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .catecory {
+    width: 100%;
+  }
+
+  .catecory_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  .main-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .close-soon {
+    width: 375px;
+  }
+
+  .close-soon-comment {
+    font-size: 16px;
+  }
+
+  .close-soon-post {
+    width: 150px;
+  }
+
+  .almost-gather {
+    width: 375px;
+  }
+
+  .almost-gather-comment {
+    font-size: 16px;
+  }
+
+  .almost-gather-post {
+    width: 150px;
+  }
+}
