@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,12 +14,14 @@
     
     <div class="page">
         <div class="leftBox">
+            {% if post.image %}
                 <img src="skyblue.png" class="itemImage">
-                <p class="postContent">내용 어쩌구저쩌구.............
-                    <br>4명 모집합니다
-                    <br>한달에 3625원씩 보내주시면 됩니다
-                    <br>6개월 이상 하실분 댓글남겨주세요
+                <!-- <img src="{{post.image.url}}" class="itemImage"> -->
+            {%endif%}
+                <p class="postContent">
+                    {{post.body | linebreaks}}
                 </p>
+
             <div class="mainBox">
                 <div class="postBoxDiv"> <!--여기서부터 댓글박스-->
                     <div class="writerInfo">
@@ -26,15 +29,37 @@
                     </div>
                     <p class="postContent">댓글 어쩌구저쩌구.............</p>
                 </div>
-
-                <div class="postBoxDiv"> <!--여기서부터 댓글박스-->
-                    <div class="writerInfo">
-                        <p class="postWriter">댓글 작성자</p>
+                <!-- 이 아래 코드 수정 자유롭게 해주세요 -->
+                {%if comments %}
+                <div class="comment_wrapper mainBox">
+                    {% for comment in comments %}
+                    <div class="comment-item postBoxDiv">
+                        작성자 : {{comment.writer}}<br>
+                        내용: {{comment.body}}<br>
+                        <button onclick="dpRecomment(this)" id="btn_recomment{{comment.id}}" value="{{comment.id}}" class="btn_recomment">대댓글 보기</button>
+                            <div id="div_recomment{{comment.id}}" class="div_recomment">
+                                {% for re_comment in re_comments %}
+                                    {% if comment == re_comment.comment_id %}
+                                    작성자: {{re_comment.writer}}<br>
+                                    내용: {{re_comment.body}}
+                                    <hr>
+                                    {% endif %}
+                                {% endfor %}
+                                <form action="{% url 'party:re_comment' post.id comment.id %}" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{form.as_p}}
+                                    <button type="submit">대댓글 쓰기</button>
+                                </form>
+                                <br>
+                            </div>
                     </div>
-                    <p class="postContent">댓글 어쩌구저쩌구.............</p>
+                    {% endfor %}
                 </div>
+                <br>
+                {%endif%}
 
-                <div class="postBoxDiv"> <!--댓글쓰는 박스-->
+                <!--댓글쓰는 박스-->
+                <!-- <div class="postBoxDiv"> 
                     <div class="writerInfo">
                         <p class="postWriter">내 닉네임</p>
                     </div>
@@ -42,33 +67,60 @@
                         <textarea id="commentWriteBox" placeholder="댓글을 입력해주세요"></textarea>
                         <input type="submit" id="commentWriteButton" value="댓글쓰기" >
                     </form>
+                </div>  -->
+                <div class="postBoxDiv">
+                    <div class="writerInfo">
+                        <p class="postWriter">{{request.user.username}}</p>
+                    </div>
+                    <form method="POST" enctype="multipart/form-data" action="{%url 'party:create_comment' post.id%}">
+                        {%csrf_token%}
+                        {{form | crispy}} <br>
+                        <input type="submit" id="commentWriteButton" value="댓글쓰기">
+                    </form>
                 </div>
 
             </div>
         </div>
 
         <div class="rightBox">
-            <p class="category">함께결제</p>
-            <h1>제목이다 넷플릭스 같이 결제하실분 구해요</h1>
-            <p class="writerName">작성자이름</p>
-            <p class="pubDate">2021-09-25</p>
+            <p class="category">함께결제{{post.category}}</p> <!--카테고리명 model수정요망/일단 무시하세요-->
+            <h1>{{post.title}}</h1>
+            <p class="writerName">{{post.author}}</p>
+            <p class="pubDate">{{post.upload_date}}</p>
             <div class="infoBoxDiv">
                 <p class="infoTitle">모집인원</p>
-                <p class="infoContent">00명</p>
+                <p class="infoContent">{{post.capacity}}명</p>
             </div>
             <div class="infoBoxDiv">
                 <p class="infoTitle">활동지역</p>
-                <p class="infoContent">서울</p>
+                <p class="infoContent">{{post.location}}</p> <!--지역명 model수정요망/일단 무시하세요-->
             </div>
             <div class="infoBoxDiv">
                 <p class="infoTitle">마감날짜</p>
-                <p class="infoContent">2021-09-25</p>
+                <p class="infoContent">{{post.meet_date}}</p>
             </div>
-            <div class="infoBoxDiv">
+            <!-- <div class="infoBoxDiv">
                 <p class="infoTitle">비용</p>
                 <p class="infoContent">3,625원</p>
-            </div>
+            </div> --> <!--비용 속성은 없어요...-->
         </div>
     </div>
+<script>
+    function dpRecomment(obj) {
+        comment_id = obj.getAttribute('value');
+        var con = document.getElementById('div_recomment'+comment_id);
+        var btn = document.getElementById('btn_recomment'+comment_id);
+
+        if(con.style.display=='none'){
+            con.style.display = 'block';
+            btn.innerHTML = '접기'
+        }else{
+            con.style.display = 'none';
+            btn.innerHTML = '대댓글 보기'
+        }
+    }
+</script>
+
+
 </body>
 </html>
