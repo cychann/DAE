@@ -182,7 +182,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p> -->
 {% endif %}
 
 <div class="main_link">
-  <a href="#">
+  <a href="{% url 'party:main' %}">
     <i class="fas fa-home"></i> 
   </a>
 </div>
@@ -222,7 +222,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p> -->
   remember.remove()
   
   const signup_link = document.createElement("a");
-  signup_link.href = "{%url 'party:main' %}";
+  signup_link.href = "{%url 'account_signup' %}";
   
   signup.innerText = "회원이 아니신가요?";
   signup.appendChild(signup_link);
