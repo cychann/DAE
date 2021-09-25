@@ -29,11 +29,12 @@ class Post(models.Model):
 
     location = models.CharField(max_length=10, choices=LOCATION_CHOICES, default='l01')
     capacity = models.IntegerField()
-    currentCount = models.IntegerField()
+    currentCount = models.IntegerField(default=0)
     body = models.TextField()
     upload_date = models.DateTimeField()
     meet_date = models.DateTimeField()
     like = ManyToManyField(User, related_name='like', blank=True)
+    applicant = ManyToManyField(User, related_name='apply', blank=True)
 
     def __str__(self):
         return self.title

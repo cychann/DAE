@@ -4,8 +4,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" post="IE=edge" />
+    <meta name="viewport" post="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="{% static 'css/party.css' %}" />
     
@@ -13,7 +13,32 @@
 
 </head>
 <body>
-    <div class="inner_content">
+    <script type="text/javascript">
+        function post_like(p_id){
+            $.ajax({
+                type: "GET",
+                url: "{% url 'party:post_likes' %}",
+                data: {
+                    'post_id':p_id
+                },
+                dataType: 'json',
+                success: function(response){
+                    $('#like_count'+p_id).html(response.like_count)
+                        if(response.message == "좋아요"){
+                            $('#heart'+p_id).attr("src", "{%static 'heart.svg' %}")
+                        } else if (response.message == "좋아요 취소") {
+                            $('#heart'+p_id).attr("src", "{%static 'empty_heart.svg' %}")
+                        }
+                },
+                error:function(request,status,error){
+                    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                }
+    
+            })
+        }
+    
+    </script>
+    <div class="inner_post">
 
         <nav>
             <ul class="menuBox">
@@ -36,11 +61,29 @@
                 <p class="title">{{post.title}}</p>
                 <p class="writer">{{post.author}}</p>
                 <p class="pubDate">{{post.upload_date | date:'y-m-d'}}</p>
-                <button class="heartButton" type="button"><img src="{% static 'heart.png' %}" class="heartImage"></button>
+                <!-- <button class="heartButton" type="button"><img src="{% static 'heart.png' %}" class="heartImage"></button> -->
+                <div class="like-box">
+                    {%if user.is_authenticated %}
+                    <button id="{{post.id}}" onclick="post_like(this.id)">
+                        {%if request.user in post.like.all%}
+                        <img class="heart" id="heart{{post.id}}" src="{% static 'heart.svg' %}" alt="full_heart">
+                        {%else%}
+                        <img class="heart" id="heart{{post.id}}" src="{% static 'empty_heart.svg' %}" alt="empty_heart">
+                        {%endif%}
+                    </button>
+                    {%else%}
+                    <button id="{{post.id}}" onclick="alert('로그인이 필요합니다')">
+                        <img class="heart" id="heart" src="{% static 'empty_heart.svg' %}" alt="empty_heart">
+                    </button>
+                    {%endif%}
+                    <span id="like_count{{post.id}}">{{post.like.count}}</span>
+                </div>
             </a>
             {%endfor%}
             
         </div>
     </div>
+
+    
 </body>
 </html>

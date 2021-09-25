@@ -15,11 +15,16 @@ def main(request):
     page = request.GET.get('page')
     all_posts = paginator.get_page(page)
 
-    return render(request, 'main.html', {'allPost':all_posts})
+    close_soon_posts = Post.objects.all().order_by('meet_date')
+
+    paginator2 = Paginator(close_soon_posts, 8)
+    soon_page = request.GET.get('page')
+    soon_posts = paginator2.get_page(soon_page)
+
+    return render(request, 'main.html', {'allPost':all_posts, 'soon_post': soon_posts})
 
 
 def category(request, category):
-    # category = request.GET.get('')
     posts = Post.objects.filter(category = category)
     paginator = Paginator(posts, 12)
     page = request.GET.get('page')
@@ -101,10 +106,11 @@ def delete(request, id):
 
 
 def post_likes(request):
+    print("1")
     if request.is_ajax():
         post_id = request.GET.get('post_id') #post_id!! 이름 주의
         post = Post.objects.get(id=post_id)
-
+    print("2")
     user = request.user
     if post.like.filter(id = user.id).exists():
         post.like.remove(user)
@@ -112,6 +118,7 @@ def post_likes(request):
     else:
         post.like.add(user)
         message = "좋아요"
+        print("3")
     context = {
         'like_count' : post.like.count(),
         'message' : message,
@@ -168,6 +175,35 @@ def transLocation(code):
     name = location_trans[code]
     return name
 
+
 def index(request):
     all_posts = Post.objects.all().order_by("-upload_date") # 모든 데이터 조회, 내림차순(-표시) 조회
     return render(request, 'party_list.html', {'title':'Post List', 'post_list':all_posts})
+
+
+#신청하기
+def applyParty(request, post_id):
+    post = Post.objects.get(id=post_id)
+
+    user = request.user
+    if post.apply.filter(id = user.id).exists(): #이미 신청했다면 신청 취소
+        post.apply.remove(user)
+    else: #신청하기
+        post.apply.add(user)
+
+    post.CurrentCount = post.apply.count() 
+    post.save()
+    return redirect('party:detail', post_id) 
+
+
+#currentCount 추가하는 메소드
+# def plusCurrentCount(id):
+#     post = get_object_or_404(Post, pk = id)
+#     post.currentCount += 1
+#     post.save()
+
+# def subCurrentCount(id):
+#     post = get_object_or_404(Post, pk = id)
+#     post.currentCount -= 1
+#     post.save()
+
