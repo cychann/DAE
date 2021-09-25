@@ -1,138 +1,155 @@
 body {
-    align-content: center;
-    align-items: center;
-    margin-left:200px;
-    margin-right:200px;
+  align-content: center;
+  align-items: center;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 
 .itemImage {
-    width:600px;
-    height:370px;
-    margin-bottom:50px;
-    border-radius: 10px;
+  width: 600px;
+  height: 370px;
+  margin-bottom: 50px;
+  border-radius: 10px;
 }
 
-
 .inner {
-    width:1150px;
-    display:flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+  width: 1150px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .page {
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-top:60px;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 60px;
+  justify-content: center;
 }
 .leftBox {
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .rightBox {
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width:418px;
-    margin-left:24px;
-    height:100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 418px;
+  margin-left: 24px;
+  height: 100%;
 }
 .mainBox {
-    width:630px;
-    margin-bottom:12px;
+  width: 630px;
+  margin-bottom: 12px;
+  border: 1px solid grey;
 }
 
-p, h1, a {
-    font-size:20px;
-    padding-left:15px;
+p,
+h1,
+a {
+  font-size: 20px;
+  padding-left: 15px;
 }
 h1 {
-    font-size: 30px;
-    vertical-align: middle;
+  font-size: 30px;
+  vertical-align: middle;
 }
 .postTitle {
-    font-size:20px;
-    margin-top:-3px;
+  font-size: 20px;
+  margin-top: -3px;
 }
 .postContent {
-    font-size:15px;
-    padding-left:15px;
-    line-height: 25px;
-    margin-top:-10px;
+  font-size: 15px;
+  padding-left: 15px;
+  line-height: 25px;
+  margin-top: -10px;
 }
 
 .postBoxDiv {
-    margin-top:20px;
+  margin-top: 20px;
 }
 
 .postBoxDiv + .postBoxDiv {
-    border-top:solid;
-    border-color:#E4E5ED;
-    border-width:1px;
+  border-top: solid;
+  border-color: #e4e5ed;
+  border-width: 1px;
 }
 
 .writerInfo {
-    display:flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 #commentWriteBox {
-    width:580px;
-    height:50px;
-    background: #E4E5ED;
-    border:none;
-    font-family:inherit;
-    border-radius: 10px;
-    margin-left:15px;
-    padding:10px;
-    line-height: 10px;
+  width: 580px;
+  height: 50px;
+  background: #e4e5ed;
+  border: none;
+  font-family: inherit;
+  border-radius: 10px;
+  margin-left: 15px;
+  padding: 10px;
+  line-height: 10px;
 }
 #commentWriteButton {
-    border:none;
-    font-family:inherit;
-    background: #FFD400;
-    width:89px;
-    height:35px;
-    border-radius: 10px;
-    font-size:inherit;
-    margin-left:525px;
-    margin-bottom:10px;
-    margin-top:5px;
+  border: none;
+  font-family: inherit;
+  background: #ffd400;
+  width: 89px;
+  height: 35px;
+  border-radius: 10px;
+  font-size: inherit;
+  margin-left: 525px;
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
 
 .infoBoxDiv {
-    border:solid;
-    border-color:#E4E5ED;
-    border-radius: 10px;;
-    margin-bottom:20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: center;
+  border: solid;
+  border-color: #e4e5ed;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
 }
 
 .infoTitle {
-    width:100px;
-    height:40px;
-    background-color: #FFD400;
-    border-radius: 10px;
-    color:white;
-    margin-left:20px;
-    padding-top:9px;
-    padding-right:15px;
+  width: 100px;
+  height: 40px;
+  background-color: #ffd400;
+  border-radius: 10px;
+  color: white;
+  margin-left: 20px;
+  padding-top: 9px;
+  padding-right: 15px;
 }
 
 .category {
-    font-size:15px;
-    color: #999797;
-    margin-bottom:-15px;
+  font-size: 15px;
+  color: #999797;
+  margin-bottom: -15px;
 }
 
-.writerName, .pubDate {
-    font-size:15px;
-    color: #999797;
-    margin-top:-10px;
+.writerName,
+.pubDate {
+  font-size: 15px;
+  color: #999797;
+  margin-top: -10px;
 }
 
+.apply_btn a {
+  text-decoration: none;
+  color: chocolate;
+  background-color: antiquewhite;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.rightBox-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

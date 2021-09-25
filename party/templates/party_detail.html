@@ -84,10 +84,25 @@
         </div>
 
         <div class="rightBox">
-            <p class="category">{{category_name}}</p> <!--카테고리명 model수정요망/일단 무시하세요-->
-            <h1>{{post.title}}</h1>
-            <p class="writerName">{{post.author}}</p>
-            <p class="pubDate">{{post.upload_date}}</p>
+            <div class="rightBox-top">
+                <div class="box-info">
+                    <p class="category">{{category_name}}</p> <!--카테고리명 model수정요망/일단 무시하세요-->
+                    <h1>{{post.title}}</h1>
+                    <p class="writerName">{{post.author}}</p>
+                    <p class="pubDate">{{post.upload_date}}</p>
+                </div>
+                <div class="apply_boxes">
+                    {%if request.user in post.applicant.all%}
+                    <div class="apply_btn">
+                        <a href="{% url 'party:apply' post.id %}">참여 취소</a>
+                    </div>
+                    {%else%}
+                    <div class="apply_btn">
+                        <a href="{% url 'party:apply' post.id %}">참여하기</a>
+                    </div>
+                    {%endif%}
+                </div>
+            </div>
             <div class="infoBoxDiv">
                 <p class="infoTitle">모집인원</p>
                 <p class="infoContent">{{post.capacity}}명</p>
@@ -100,15 +115,7 @@
                 <p class="infoTitle">마감날짜</p>
                 <p class="infoContent">{{post.meet_date | date:'y-m-d H:i'}}</p>
             </div> -->
-            {%if request.user in post.applicant.all%}
-            <div class="apply_btn">
-                <a href="{% url 'party:apply' post.id %}">참여 취소</a>
-            </div>
-            {%else%}
-            <div class="apply_btn">
-                <a href="{% url 'party:apply' post.id %}">참여하기</a>
-            </div>
-            {%endif%}
+            
             <!-- <div class="infoBoxDiv">
                 <p class="infoTitle">비용</p>
                 <p class="infoContent">3,625원</p>
