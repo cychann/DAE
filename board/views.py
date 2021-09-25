@@ -141,3 +141,42 @@ def search(request):
     posts = paginator.get_page(page)
 
     return render(request, 'search.html', {'posts':posts})
+
+
+def transCategory(code):
+    category_trans = {
+        'c01': '스포츠', 
+        'c02': '게임', 
+        'c03': '독서', 
+        'c04': '함께 결제', 
+        'c05': '언어', 
+        'c06': '공예', 
+        'c07': '음악', 
+        'c08': '문화',
+        'c09': '공모전',
+    }
+    name = category_trans[code]
+    return name
+
+
+def transLocation(code):
+    location_trans = {
+        'l01': '서울', 
+        'l02': '경기', 
+        'l03': '강원', 
+        'l04': '충남', 
+        'l05': '충북', 
+        'l06': '경남',
+        'l07': '경북',
+        'l08': '전남', 
+        'l09': '전북',
+        'l10': '인천', 
+        'l11': '대전', 
+        'l12': '광주', 
+        'l13': '대구',
+        'l10': '울산', 
+        'l11': '부산', 
+        'l03': '제주',
+    }
+    name = location_trans[code]
+    return name
