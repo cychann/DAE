@@ -1,11 +1,11 @@
-from django
-from django.db.models import fields from forms
-from .models import Board
+from django.db.models import fields
+from .models import Post
+from django import forms
 
 class BoardWriteForm(forms.ModelForm):
     
     class Meta:
-        model = Board
+        model = Post
         fields = [
             'title',
             'content',
