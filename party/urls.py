@@ -21,6 +21,5 @@ urlpatterns = [
     path('delete/<str:id>', delete, name="delete"),
     path('search/', search, name="search"),
     path('index/', index, name="index"),
-    path('applyPary/', applyParty, name="button_call"),
 
 ]
