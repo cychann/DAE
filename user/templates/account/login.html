@@ -200,6 +200,9 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p> -->
 </div>
 <script src="https://kit.fontawesome.com/d736d670df.js" crossorigin="anonymous"></script>
 <script>
+  const menu = document.querySelector("div");
+  menu.remove()
+  
   const div_login = document.querySelector("#div_id_login");
   div_login.classList.add("txt_field");
 
@@ -231,8 +234,5 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p> -->
 
   const div_remember = document.querySelector("#div_id_remember");
   div_remember.classList.add("hidden");
-
-  const menu = document.querySelector("div");
-  menu.remove()
 </script>
 {% endblock %}

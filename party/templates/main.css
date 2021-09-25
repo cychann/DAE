@@ -1,0 +1,153 @@
+* {
+  font-family: "Do Hyeon", sans-serif;
+}
+
+.main {
+  background-color: #fff9c4;
+  padding: 0 12rem 2rem;
+  margin-bottom: 7rem;
+}
+
+/* navbar */
+
+.navbar {
+  margin-bottom: 5rem;
+}
+
+.navbar-left a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-title {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0.5rem;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-right a {
+  margin: 1rem;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+/* main-header */
+
+.main-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.main-text {
+  margin-bottom: 1.5rem;
+}
+
+.main-text-description {
+  margin-bottom: 0.7rem;
+}
+
+.main-text-title {
+  font-size: 60px;
+}
+
+.main-serach-box input {
+  width: 600px;
+  height: 80px;
+  font-size: 30px;
+}
+
+.main-serach-box input::placeholder {
+  font-size: 30px;
+}
+
+/* catecory */
+.catecory {
+  margin-top: 8rem;
+  background-color: antiquewhite;
+  width: 900px;
+  border-radius: 2rem;
+}
+
+.catecory_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.catecory_list a {
+  text-decoration: none;
+  margin: 2rem;
+  color: grey;
+}
+
+.catecory-list-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.catecory-list-box i {
+  font-size: 40px;
+}
+
+.catecoty_name {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+/* main-bottom */
+
+.main-bottom {
+  padding: 0 12rem;
+}
+
+.close-soon-comment {
+  margin-left: 1rem;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.close-soon-posts {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.close-soon-post {
+  margin: 1rem;
+  width: 220px;
+  height: 200px;
+  background-color: cadetblue;
+}
+
+.almost-gather-comment {
+  margin-left: 1rem;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.almost-gather-posts {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.almost-gather-post {
+  margin: 1rem;
+  width: 220px;
+  height: 200px;
+  background-color: blanchedalmond;
+}
