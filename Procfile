@@ -1,0 +1,1 @@
+web: gunicorn DAE.wsgi --log-file -
