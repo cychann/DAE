@@ -12,6 +12,11 @@ body {
     border-radius: 10px;
 }
 
+.apply_btn a{
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
 
 .inner {
     width:1150px;

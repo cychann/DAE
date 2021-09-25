@@ -185,12 +185,12 @@ def applyParty(request, post_id):
     post = Post.objects.get(id=post_id)
 
     user = request.user
-    if post.apply.filter(id = user.id).exists(): #이미 신청했다면 신청 취소
-        post.apply.remove(user)
+    if post.applicant.filter(id = user.id).exists(): #이미 신청했다면 신청 취소
+        post.applicant.remove(user)
     else: #신청하기
-        post.apply.add(user)
+        post.applicant.add(user)
 
-    post.CurrentCount = post.apply.count() 
+    post.CurrentCount = post.applicant.count() 
     post.save()
     return redirect('party:detail', post_id) 
 

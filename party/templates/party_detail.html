@@ -100,9 +100,15 @@
                 <p class="infoTitle">마감날짜</p>
                 <p class="infoContent">{{post.meet_date | date:'y-m-d H:i'}}</p>
             </div> -->
-            <div>
-                <button onclick="location.href={% url 'party:apply' post.id %}"> 참여하기 </button></a>
+            {%if request.user in post.applicant.all%}
+            <div class="apply_btn">
+                <a href="{% url 'party:apply' post.id %}">참여 취소</a>
             </div>
+            {%else%}
+            <div class="apply_btn">
+                <a href="{% url 'party:apply' post.id %}">참여하기</a>
+            </div>
+            {%endif%}
             <!-- <div class="infoBoxDiv">
                 <p class="infoTitle">비용</p>
                 <p class="infoContent">3,625원</p>

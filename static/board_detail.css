@@ -13,6 +13,8 @@ body {
 }
 
 
+
+
 .inner {
     width:1150px;
     display:flex;
@@ -62,6 +64,9 @@ h1 {
     padding-left:15px;
     line-height: 25px;
     margin-top:-10px;
+    word-break:break-all;
+    white-space: pre-line;
+    width:600px;
 }
 
 .postBoxDiv {
@@ -136,3 +141,44 @@ h1 {
     margin-top:-10px;
 }
 
+.postItemBox + .postItemBox {
+    border-top:solid;
+    border-color:#E4E5ED;
+}
+.postItemBox {
+    padding:5px;
+    text-decoration: none;
+    color:inherit;
+    border:solid;
+    border-color:#E4E5ED;
+    border-radius: 10px;
+    margin-bottom:10px;
+}
+.postItemBox:nth-child(2n) {
+    background-color:#E4E5ED;
+    align-items: center;
+}
+.postWriterPubDateBox {
+    display:flex;
+    flex-direction: row;
+    margin-top:5px;
+}
+
+
+.writerName, .pubDate {
+    font-size:15px;
+    color: #999797;
+    margin-top:-10px;
+}
+
+.title {
+    font-size: 15px;
+}
+
+.content {
+    font-size:12px;
+}
+
+.writer {
+    font-size:15px;
+}
