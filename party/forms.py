@@ -20,7 +20,7 @@ class PostForm(forms.ModelForm):
         label='제목'
     )
     location = forms.ChoiceField(
-        choices=Post.CATEGORY_CHOICES,
+        choices=Post.LOCATION_CHOICES,
         label='지역'
     )
     capacity = forms.IntegerField(
