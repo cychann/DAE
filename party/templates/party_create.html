@@ -17,15 +17,44 @@
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
     <title>글쓰기</title>
 </head>
 <body>
+    <!-- navbar -->
+    <div class="navbar">
+        <div class="navbar-left">
+          <a href="{% url 'party:main' %}">
+            <i class="fas fa-user-friends"></i>
+            <span class="navbar-title">파티원구함</span>
+          </a>
+        </div>
+        <div class="navbar-right">
+          {% if user.is_authenticated %}
+          <a href="{% url 'party:new' %}" class="post-party">파티글 작성</a>
+          <a href="">마이페이지</a>
+          <a href="{% url 'account_logout' %}">로그아웃</a>
+          {% else %}
+          <a href="{% url 'account_login' %}">로그인</a>
+          <a href="{% url 'account_signup' %}">회원가입</a>
+          {% endif %}
+        </div>
+      </div>
+
       <!-- body -->
       <div class="body">
         <h1>글 작성</h1>
 
         <div class="party-create-body">
+            <form action="{% url 'party:new' %}">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="party-submit">제출</button>
+            </form>
+        </div>
+
+
+        <!-- <div class="party-create-body">
             <div class="party-create-body-left">
               <div class="party-title">
                   <span>제목</span>
@@ -50,8 +79,8 @@
                   <input type="text">
               </div>
             </div>
-        </div>
-        <button type="submit" class="party-submit">제출</button>
+        </div> -->
+        
       </div>
 </body>
 </html>
