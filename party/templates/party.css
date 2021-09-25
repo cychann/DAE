@@ -1,0 +1,96 @@
+body {
+    align-content: center;
+    margin-left:200px;
+    margin-right:200px;
+}
+
+.inner_content {
+    width:1150px;
+}
+
+.menuBox {
+    width:180px;
+    position:fixed;
+    height:100%;
+
+}
+
+.menuBox li a {
+    display: block;
+    color:#555969;
+    margin-top:20px;
+}
+
+ul {
+    list-style: none;
+}
+
+.menuBox li a:hover {
+    color:#212224;
+}
+
+.menuName {
+    text-decoration: none;
+}
+
+.itemContainer {
+    margin-left: 220px;
+    padding-left: 20px;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-bottom:30px;
+    padding-top:30px;
+}
+
+.itemBox {
+    width:206px;
+    height:240px;
+    text-decoration: none;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    color:inherit;
+    padding-top:3px;
+    position: relative;
+}
+
+.heartButton {
+    position: absolute;
+    top:200px;
+    left:170px;
+    padding:0px;
+    border:none;
+}
+
+.heartImage {
+    width:30px;
+    height: 30px;
+}
+
+.itemImage {
+    width:200px;
+    height:120px;
+    border-radius: 5px;
+    vertical-align: top;
+    margin-right:3px;
+    margin-left:3px;
+}
+
+.title {
+    font-size:15px;
+    margin-right:3px;
+    margin-left:3px;
+}
+
+.writer {
+    font-size:12px;
+    margin-right:3px;
+    margin-left:3px;
+}
+
+.pubDate {
+    font-size:12px;
+    margin-right:3px;
+    margin-left:3px;
+    margin-top:-10px;
+}
