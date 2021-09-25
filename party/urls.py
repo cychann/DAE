@@ -13,7 +13,7 @@ urlpatterns = [
     path('like/', post_likes, name="post_likes"),
 
     path('', main, name='main'),
-    path('category/<str:id>', category, name="category"),
+    path('category/<str:category>', category, name="category"),
 
     path('new/', new, name="new"),
     path('edit/<str:id>', edit, name="edit"),

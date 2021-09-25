@@ -19,15 +19,19 @@ def main(request):
 
 
 def category(request, category):
+    # category = request.GET.get('')
     posts = Post.objects.filter(category = category)
     paginator = Paginator(posts, 12)
     page = request.GET.get('page')
     all_posts = paginator.get_page(page)
-    return render(request, 'category.html', {'allPost':all_posts}) #templates 파일명 추후 수정하기
+    return render(request, 'party.html', {'allPost':all_posts}) #templates 파일명 추후 수정하기
 
 
 def detail(request, id):
     post = get_object_or_404(Post, pk = id)
+    cat_name = transCategory(post.category)
+    loc_name = transLocation(post.location)
+
     comments = Comment.objects.filter(post_id=id, comment_id__isnull=True)
 
     re_comments = []
@@ -35,7 +39,7 @@ def detail(request, id):
         re_comments += list(Comment.objects.filter(comment_id=comment.id))
 
     form = CommentForm()
-    return render(request, 'party_detail.html', {'post':post, 'comments':comments, 're_comments':re_comments, 'form': form})
+    return render(request, 'party_detail.html', {'post':post, 'comments':comments, 're_comments':re_comments, 'form': form, 'category_name':cat_name, 'location_name':loc_name})
 
 
 def create_comment(request, post_id):
@@ -124,3 +128,42 @@ def search(request):
     posts = paginator.get_page(page)
 
     return render(request, 'search.html', {'posts':posts})
+
+
+def transCategory(code):
+    category_trans = {
+        'c01': '스포츠', 
+        'c02': '게임', 
+        'c03': '독서', 
+        'c04': '함께 결제', 
+        'c05': '언어', 
+        'c06': '공예', 
+        'c07': '음악', 
+        'c08': '문화',
+        'c09': '공모전',
+    }
+    name = category_trans[code]
+    return name
+
+
+def transLocation(code):
+    location_trans = {
+        'l01': '서울', 
+        'l02': '경기', 
+        'l03': '강원', 
+        'l04': '충남', 
+        'l05': '충북', 
+        'l06': '경남',
+        'l07': '경북',
+        'l08': '전남', 
+        'l09': '전북',
+        'l10': '인천', 
+        'l11': '대전', 
+        'l12': '광주', 
+        'l13': '대구',
+        'l10': '울산', 
+        'l11': '부산', 
+        'l03': '제주',
+    }
+    name = location_trans[code]
+    return name
