@@ -34,6 +34,7 @@ class Post(models.Model):
     upload_date = models.DateTimeField()
     meet_date = models.DateTimeField()
     like = ManyToManyField(User, related_name='like', blank=True)
+    applicant = ManyToManyField(User, related_name='apply', blank=True)
 
     def __str__(self):
         return self.title
