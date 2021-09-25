@@ -87,29 +87,34 @@
             {% for post in allPost %}
             <a class="itemBox" href="{%url 'party:detail' post.id%}">
                 <img src="{% static 'skyblue.png' %}" class="itemImage">
-                <p class="title">{{post.title}}</p>
-                <p class="writer">{{post.author}}</p>
-                <p class="pubDate">{{post.upload_date | date:'y-m-d'}}</p>
+                <div class="post_component">
+                    <div class="post_info">
+                        <p class="title">{{post.title}}</p>
+                        <p class="writer">{{post.author}}</p>
+                        <p class="pubDate">{{post.upload_date | date:'y-m-d'}}</p>
+                    </div>
+                    <div class="like-box">
+                        <div class="like-img">
+                            {%if user.is_authenticated %}
+                            <button id="{{post.id}}" onclick="post_like(this.id)">
+                                {%if request.user in post.like.all%}
+                                <img class="heart" id="heart{{post.id}}" src="{% static 'heart.svg' %}" alt="full_heart" class="heartImage">
+                                {%else%}
+                                <img class="heart" id="heart{{post.id}}" src="{% static 'empty_heart.svg' %}" alt="empty_heart" class="heartImage">
+                                {%endif%}
+                            </button>
+                            {%else%}
+                            <button id="{{post.id}}" onclick="alert('로그인이 필요합니다')">
+                                <img class="heart" id="heart" src="{% static 'empty_heart.svg' %}" alt="empty_heart" class="heartImage">
+                            </button>
+                        {%endif%}
+                        </div>
+                        <span id="like_count{{post.id}}">{{post.like.count}}</span>
+                    </div>
+                </div>
                 <!-- <button class="heartButton" type="button"><img src="{% static 'heart.png' %}" clas"></button> -->
             </a>
-            <div class="like-box">
-                <div class="like-img">
-                    {%if user.is_authenticated %}
-                    <button id="{{post.id}}" onclick="post_like(this.id)">
-                        {%if request.user in post.like.all%}
-                        <img class="heart" id="heart{{post.id}}" src="{% static 'heart.svg' %}" alt="full_heart" class="heartImage">
-                        {%else%}
-                        <img class="heart" id="heart{{post.id}}" src="{% static 'empty_heart.svg' %}" alt="empty_heart" class="heartImage">
-                        {%endif%}
-                    </button>
-                    {%else%}
-                    <button id="{{post.id}}" onclick="alert('로그인이 필요합니다')">
-                        <img class="heart" id="heart" src="{% static 'empty_heart.svg' %}" alt="empty_heart" class="heartImage">
-                    </button>
-                {%endif%}
-                </div>
-                <span id="like_count{{post.id}}">{{post.like.count}}</span>
-            </div>
+            
             {%endfor%}
             
         </div>

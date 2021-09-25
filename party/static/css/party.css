@@ -53,11 +53,21 @@ ul {
   position: relative;
 }
 
+.post_component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .heartButton {
   position: absolute;
   top: 200px;
   left: 170px;
   padding: 0px;
+  border: none;
+}
+
+.like-img {
   border: none;
 }
 
@@ -70,11 +80,17 @@ ul {
 
 .like-box button {
   background-color: transparent;
+  border: 0;
+  outline: 0;
 }
 
 .like-box img {
   width: 30px;
   height: 30px;
+}
+
+.heartImage {
+  border: none;
 }
 
 .itemImage {
