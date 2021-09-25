@@ -96,12 +96,12 @@
                 <p class="infoTitle">활동지역</p>
                 <p class="infoContent">{{location_name}}</p> <!--지역명 model수정요망/일단 무시하세요-->
             </div>
-            <div class="infoBoxDiv">
+            <!-- <div class="infoBoxDiv">
                 <p class="infoTitle">마감날짜</p>
                 <p class="infoContent">{{post.meet_date | date:'y-m-d H:i'}}</p>
-            </div>
+            </div> -->
             <div>
-                <button onclick="location.href={% url 'party:apply' %}"> 참여하기 </button></a>
+                <button onclick="location.href={% url 'party:apply' post.id %}"> 참여하기 </button></a>
             </div>
             <!-- <div class="infoBoxDiv">
                 <p class="infoTitle">비용</p>
