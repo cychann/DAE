@@ -15,9 +15,13 @@ def main(request):
     page = request.GET.get('page')
     all_posts = paginator.get_page(page)
 
-    soon_posts = Post.objects.all().order_by('meet_date')
+    close_soon_posts = Post.objects.all().order_by('meet_date')
 
-    return render(request, 'main.html', {'allPost':all_posts})
+    paginator2 = Paginator(close_soon_posts, 8)
+    soon_page = request.GET.get('page')
+    soon_posts = paginator2.get_page(soon_page)
+
+    return render(request, 'main.html', {'allPost':all_posts, 'soon_post': soon_posts})
 
 
 def category(request, category):
