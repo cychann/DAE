@@ -11,11 +11,22 @@
 <body>
     <div class="inner__content">
         <div class="pageInfo">
-            <h1>함께결제</h1>
+            <h1>{{category_name}}</h1> 
             <a class="writePostButton" href="#">글쓰기</a>
         </div>
         <div class="container">
-            
+            {% for post in allPost%}
+            <a href="board_detail.html" class="postItemBox">
+                <div class="postTitleContentBox">
+                    <p class="title">{{post.title}}</p>
+                    <p class="content">{{post.body}}</p>
+                </div>
+                <div class="postWriterPubDateBox">
+                    <p class="writer">{{post.author}}</p>
+                    <p class="pubDate">{{post.upload_date | date:'y-m-d'}}</p>
+                </div>
+            </a>
+{% comment %}             
             <a href="board_detail.html" class="postItemBox">
                 <div class="postTitleContentBox">
                     <p class="title">넷플릭스 쓰는데 왓챠도 결제할까 고민이에요</p>
@@ -36,18 +47,7 @@
                     <p class="writer">작성자이름</p>
                     <p class="pubDate">2021-09-25</p>
                 </div>
-            </a>
-            
-            <a href="board_detail.html" class="postItemBox">
-                <div class="postTitleContentBox">
-                    <p class="title">넷플릭스 쓰는데 왓챠도 결제할까 고민이에요</p>
-                    <p class="content">넷플릭스 네명이서 쓰고있는데 왕좌의 게임이 보고 싶어서 왓챠도 결제할까 고민이에요 두개 쓰시는분 잘 보시나요? 하나만 보고 돈 날릴까봐 걱정이라 망설이고 있습니다 디즈니도 좋아하는데 이러다가 디즈니 플러스도 하는거 아...</p>
-                </div>
-                <div class="postWriterPubDateBox">
-                    <p class="writer">작성자이름</p>
-                    <p class="pubDate">2021-09-25</p>
-                </div>
-            </a>
+            </a> {% endcomment %}
 
         </div>
     </div>
