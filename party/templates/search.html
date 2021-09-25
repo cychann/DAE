@@ -1,10 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
 {% load static %}
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" post="IE=edge" />
     <meta name="viewport" post="width=device-width, initial-scale=1.0" />
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/d736d670df.js" crossorigin="anonymous"></script>
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/party.css' %}" />
+    <style>
+        * {
+            font-family: "Gowun Dodum", sans-serif;
+        }
+            /* navbar */
+
+        .navbar {
+        margin-bottom: 5rem;
+        }
+
+        .navbar-left a {
+        text-decoration: none;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .navbar-title {
+        font-size: 30px;
+        font-weight: 600;
+        margin: 0.5rem;
+        }
+
+        .navbar-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .navbar-right a {
+        margin: 1rem;
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+        }
+
+        .post-party {
+        font-size: 20px;
+        }
+
+        .navbar a:hover {
+        color: #ffab40;
+        transform: scale(1.2);
+        transition: all 0.3s;
+        }
+    </style>
 </head>
 <div class="itemContainer">
     {% for post in posts %}
@@ -19,3 +78,5 @@
     {%endfor%}
 
 </div>
+
+{%endblock%}
