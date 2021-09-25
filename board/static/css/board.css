@@ -1,0 +1,85 @@
+.inner__content {
+    width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+.pageInfo {
+    padding-top:30px;
+    padding-bottom:20px;
+    display:flex;
+    text-align: center;
+}
+.container {
+    display:flex;
+    flex-direction: column;
+    width:1099px;
+    border:solid;
+    border-radius:10px;
+    border-color:black;
+    justify-content: space-between;
+
+}
+.postItemBox + .postItemBox {
+    border-top:solid;
+    border-color:#E4E5ED;
+}
+.postItemBox {
+    border-color:#E4E5ED;
+    padding:10px;
+    padding-left:10px;
+    text-decoration: none;
+    color:inherit;
+}
+.postItemBox:nth-child(2n) {
+    background-color:#E4E5ED;
+    align-items: center;
+}
+.postWriterPubDateBox {
+    display:flex;
+    flex-direction: row;
+    margin-top:5px;
+}
+h1 {
+    font-size: 30px;
+    font-weight:bold;
+    color:black;
+}
+
+.writePostButton {
+    border:none;
+    background: #FFD400;
+    width:80px;
+    height:30px;
+    border-radius: 10px;
+    font-size:15px;
+    text-decoration: none;
+    color:white;
+    padding-top:8px;
+    margin-top:50px;
+    margin-left:900px;
+}
+
+.title {
+    font-size:15px;
+    font-weight:bold;
+}
+.content {
+    font-size:13px;
+}
+.writerImage {
+    width:14px;
+    height:14px;
+    border-radius: 100%;
+    margin-right:10px;
+    margin-top:3px;
+}
+.writer {
+    font-size:13px;
+    color:#999797;
+}
+.pubDate {
+    font-size:13px;
+    color:#999797;
+    margin-left:5px;
+}
