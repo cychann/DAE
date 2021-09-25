@@ -1,7 +1,6 @@
 # DAE (Dose Anyone Else?)
 
-![DAE](https://user-images.githubusercontent.com/73277502/134765907-2bac8522-cc2b-41d9-a914-0a651f226487.png)
-
+<img src="https://user-images.githubusercontent.com/73277502/134765907-2bac8522-cc2b-41d9-a914-0a651f226487.png" width=50%/>
 
 ### 서비스 소개
 
