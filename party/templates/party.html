@@ -13,6 +13,51 @@
 
 </head>
 <body>
+    <div class="inner_post">
+
+        <nav>
+            <ul class="menuBox">
+                <li><a class="menuName" href="{% url 'party:category' 'c01' %}">스포츠</a></li>
+                <li><a class="menuName" href="{% url 'party:category' 'c02' %}">게임</a></li>
+                <li><a class="menuName" href="{% url 'party:category' 'c03' %}">독서</a></li>
+                <li><a class="menuName" href="{% url 'party:category' 'c04' %}">함께 결제</a></li>
+                <li><a class="menuName" href="{% url 'party:category' 'c05' %}">언어</a></li>
+                <li><a class="menuName" href="{% url 'party:category' 'c06' %}">공예</a></li>
+                <li><a class="menuName" href="{% url 'party:category' 'c07' %}">음악</a></li>
+                <li><a class="menuName" href="{% url 'party:category' 'c08' %}">문화</a></li>
+                <li><a class="menuName" href="{% url 'party:category' 'c09' %}">공모전</a></li>
+            </ul>
+
+        </nav>
+        <div class="itemContainer">
+            {% for post in allPost %}
+            <a class="itemBox" href="{%url 'party:detail' post.id%}">
+                <img src="{% static 'skyblue.png' %}" class="itemImage">
+                <p class="title">{{post.title}}</p>
+                <p class="writer">{{post.author}}</p>
+                <p class="pubDate">{{post.upload_date | date:'y-m-d'}}</p>
+                <!-- <button class="heartButton" type="button"><img src="{% static 'heart.png' %}" class="heartImage"></button> -->
+            </a>
+            <div class="like-box">
+                {%if user.is_authenticated %}
+                <button id="{{post.id}}" onclick="post_like(this.id)">
+                    {%if request.user in post.like.all%}
+                    <img class="heart" id="heart{{post.id}}" src="{% static 'heart.svg' %}" alt="full_heart">
+                    {%else%}
+                    <img class="heart" id="heart{{post.id}}" src="{% static 'empty_heart.svg' %}" alt="empty_heart">
+                    {%endif%}
+                </button>
+                {%else%}
+                <button id="{{post.id}}" onclick="alert('로그인이 필요합니다')">
+                    <img class="heart" id="heart" src="{% static 'empty_heart.svg' %}" alt="empty_heart">
+                </button>
+                {%endif%}
+                <span id="like_count{{post.id}}">{{post.like.count}}</span>
+            </div>
+            {%endfor%}
+            
+        </div>
+    </div>
     <script type="text/javascript">
         function post_like(p_id){
             $.ajax({
@@ -38,52 +83,7 @@
         }
     
     </script>
-    <div class="inner_post">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
-        <nav>
-            <ul class="menuBox">
-                <li><a class="menuName" href="{% url 'party:category' 'c01' %}">스포츠</a></li>
-                <li><a class="menuName" href="{% url 'party:category' 'c02' %}">게임</a></li>
-                <li><a class="menuName" href="{% url 'party:category' 'c03' %}">독서</a></li>
-                <li><a class="menuName" href="{% url 'party:category' 'c04' %}">함께 결제</a></li>
-                <li><a class="menuName" href="{% url 'party:category' 'c05' %}">언어</a></li>
-                <li><a class="menuName" href="{% url 'party:category' 'c06' %}">공예</a></li>
-                <li><a class="menuName" href="{% url 'party:category' 'c07' %}">음악</a></li>
-                <li><a class="menuName" href="{% url 'party:category' 'c08' %}">문화</a></li>
-                <li><a class="menuName" href="{% url 'party:category' 'c09' %}">공모전</a></li>
-            </ul>
-
-        </nav>
-        <div class="itemContainer">
-            {% for post in allPost %}
-            <a class="itemBox" href="#">
-                <img src="{% static 'skyblue.png' %}" class="itemImage">
-                <p class="title">{{post.title}}</p>
-                <p class="writer">{{post.author}}</p>
-                <p class="pubDate">{{post.upload_date | date:'y-m-d'}}</p>
-                <!-- <button class="heartButton" type="button"><img src="{% static 'heart.png' %}" class="heartImage"></button> -->
-                <div class="like-box">
-                    {%if user.is_authenticated %}
-                    <button id="{{post.id}}" onclick="post_like(this.id)">
-                        {%if request.user in post.like.all%}
-                        <img class="heart" id="heart{{post.id}}" src="{% static 'heart.svg' %}" alt="full_heart">
-                        {%else%}
-                        <img class="heart" id="heart{{post.id}}" src="{% static 'empty_heart.svg' %}" alt="empty_heart">
-                        {%endif%}
-                    </button>
-                    {%else%}
-                    <button id="{{post.id}}" onclick="alert('로그인이 필요합니다')">
-                        <img class="heart" id="heart" src="{% static 'empty_heart.svg' %}" alt="empty_heart">
-                    </button>
-                    {%endif%}
-                    <span id="like_count{{post.id}}">{{post.like.count}}</span>
-                </div>
-            </a>
-            {%endfor%}
-            
-        </div>
-    </div>
-
-    
 </body>
 </html>

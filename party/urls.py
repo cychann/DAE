@@ -11,6 +11,7 @@ urlpatterns = [
     path('detail/<str:post_id>/comment/<str:comment_id>', create_re_comment, name="re_comment"),
 
     path('like/', post_likes, name="post_likes"),
+    path('apply/<str:post_id>', applyParty, name="apply"),
 
     path('', main, name='main'),
     path('category/<str:category>', category, name="category"),
