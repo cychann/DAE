@@ -41,6 +41,16 @@
   font-weight: 500;
 }
 
+.post-party {
+  font-size: 20px;
+}
+
+.navbar a:hover {
+  color: #ffab40;
+  transform: scale(1.2);
+  transition: all 0.3s;
+}
+
 /* main-header */
 
 .main-header {
