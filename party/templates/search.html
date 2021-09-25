@@ -1,0 +1,21 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" post="IE=edge" />
+    <meta name="viewport" post="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'css/party.css' %}" />
+</head>
+<div class="itemContainer">
+    {% for post in posts %}
+    <a class="itemBox" href="{%url 'party:detail' post.id%}">
+        <img src="{% static 'skyblue.png' %}" class="itemImage">
+        <p class="title">{{post.title}}</p>
+        <p class="writer">{{post.author}}</p>
+        <p class="pubDate">{{post.upload_date | date:'y-m-d'}}</p>
+        <!-- <button class="heartButton" type="button"><img src="{% static 'heart.png' %}" class="heartImage"></button> -->
+    </a>
+
+    {%endfor%}
+
+</div>

@@ -54,7 +54,10 @@
           <img src="static/DAESVG.svg" id="DAE">
         </div>
         <div class="main-serach-box">
-          <input class="form-control me-2" type="search" placeholder="키워드를 검색하세요" aria-label="Search">
+          <form action="{%url 'party:search' %}">
+            <input class="form-control me-2" type="search" placeholder="키워드를 검색하세요" aria-label="Search" name="keyword" id="keyword">
+            
+          </form>
         </div>
 
         <!-- catecory -->
