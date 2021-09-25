@@ -22,7 +22,7 @@
 </head>
 <body>
   <!-- main -->
-    <div class="main">
+    <div class="main" style="margin-bottom: 0px;">
 
         <!-- navbar -->
       <div class="navbar">
@@ -126,16 +126,19 @@
         </div>
       </div> -->
 
-      <div class="almost-gather">
+      <!-- <div class="almost-gather">
         <div class="almost-gather-comment">#파티원구함 전체보기</div>
         <div class="almost-gather-posts">
           {% for post in allPost %}
           <div class="almost-gather-post">
-            {{post.title}}
+            {{post.title}}<br>
+            {{post.author}}<br>
+            {{post.upload_date}}<br>
+            {{post.capacity}}명 모집
           </div>
           {%endfor%}
         </div>
-      </div>
+      </div> -->
     </div>
   
       
